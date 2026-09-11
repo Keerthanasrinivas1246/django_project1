@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <div class="profile-icon">
+            👤
+        </div>
+
+        <h2>Profile Page</h2>
+
+        <h3>
+            Welcome,
+            <span>{{ keeru.first_name }} {{ keeru.last_name }}</span>
+        </h3>
+
+        <div class="profile-details">
+
+            <p><strong>Email :</strong> {{ keeru.email }}</p>
+
+            <p><strong>Username :</strong> {{ keeru.username }}</p>
+
+        </div>
+
+        <div class="profile-buttons">
+
+            <a href="{% url 'update_profile' %}" class="update-btn">
+                Update Profile
+            </a>
+
+            <a href="{% url 'update_password' %}" class="password-btn">
+                Update Password
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.querySelectorAll(".profile-buttons a").forEach(button=>{
+
+    button.addEventListener("mouseenter",function(){
+
+        this.style.transform="scale(1.05)";
+
+    });
+
+    button.addEventListener("mouseleave",function(){
+
+        this.style.transform="scale(1)";
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,221 @@
+/* ==========================================================
+   Global Base Styles — style.css
+   Shared across every page (loaded via main.html)
+   Page-specific CSS files (home.css, genre.css, etc.) load
+   after this one and will override matching selectors.
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    color: #fff;
+}
+
+a {
+    color: inherit;
+}
+
+img, video {
+    max-width: 100%;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* Scrollbar (Webkit) — matches the glass/gradient theme */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff8a00, #e52e71);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e52e71, #ff8a00);
+}
+
+/* ==========================================================
+   Navbar — floating pill style
+   ========================================================== */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 18px auto 0;
+    padding: 12px 22px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    position: sticky;
+    top: 18px;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff8a00, #e52e71);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(229, 46, 113, 0.35);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: 9px 18px;
+    border-radius: 24px;
+    transition: color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-links a.active {
+    color: #fff;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+}
+
+/* Sign Out styled as a distinct danger pill */
+.nav-links a[href*="signout"] {
+    color: #ff9a9a;
+}
+
+.nav-links a[href*="signout"]:hover {
+    color: #fff;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.nav-links a[href*="signout"].active {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    box-shadow: 0 4px 12px rgba(255, 65, 108, 0.4);
+}
+
+/* ---------- Hamburger Menu Button ---------- */
+.menu-btn {
+    display: none;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.25s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(1.05);
+}
+
+/* ==========================================================
+   Flash Messages
+   ========================================================== */
+
+#messages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 20px 0;
+    transition: opacity 0.7s ease;
+}
+
+#messages p {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(56, 249, 215, 0.4);
+    border-left: 4px solid #38f9d7;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+#messages.fade-out {
+    opacity: 0;
+}
+
+/* ==========================================================
+   Responsive Navbar
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        margin: 14px 14px 0;
+        border-radius: 22px;
+        position: relative;
+        top: 0;
+        flex-wrap: wrap;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        width: 100%;
+        margin-top: 12px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 16px;
+        padding: 10px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        text-align: center;
+    }
+}

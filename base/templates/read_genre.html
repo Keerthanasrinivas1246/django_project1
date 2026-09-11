@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/read_genre.css' %}">
+<div class="genre-list-container">
+    <div class="genre-list-box">
+        <h2>Genre List</h2>
+        <div class="top-bar">
+            <a href="{% url 'create_genre' %}" class="add-btn">
+                Add Genre
+            </a>
+            <form method="GET" id="searchForm" class="search-box">
+                <input
+                    type="text"
+                    name="q"
+                    id="searchInput"
+                    value="{{ search|default:'' }}"
+                    placeholder="Search Genre..."
+                >
+                <button type="submit" class="search-btn">
+                    Search
+                </button>
+            </form>
+        </div>
+        <div class="table-container">
+            <table class="genre-table">
+                <colgroup>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                    <col>
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Genre Name</th>
+                        <th>Description</th>
+                        <th>Rating</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ i.id }}</td>
+
+                        <td>{{ i.name }}</td>
+
+                        <td>{{ i.desc }}</td>
+
+                        <td>⭐ {{ i.rating }}</td>
+
+
+
+                        <td>
+
+                            <a href="{% url 'update_genre' i.id %}" class="update-btn">
+                                Update
+                            </a>
+                            <a href="{% url 'delete_genre' i.id %}" class="delete-btn deleteLink">
+                                Delete
+                            </a>
+
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="no-data">
+                            No Genres Found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchForm = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+
+    searchForm.addEventListener("submit", function (e) {
+        if (input.value.trim() === "") {
+            e.preventDefault();
+            alert("Please enter a search keyword.");
+        }
+    });
+
+    document.querySelectorAll(".deleteLink").forEach(function (button) {
+        button.addEventListener("click", function (e) {
+            if (!confirm("Are you sure you want to delete this genre?")) {
+                e.preventDefault();
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

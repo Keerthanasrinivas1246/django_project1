@@ -1,0 +1,121 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/update_profile.css' %}">
+
+<div class="update-profile-container">
+
+    <div class="update-profile-card">
+
+        <div class="update-profile-icon">
+            ✏️
+        </div>
+
+        <h2>Update Profile</h2>
+
+        <form method="POST" id="updateProfileForm">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                id="firstName"
+                name="first_name"
+                value="{{ keeru.first_name }}"
+                placeholder="First Name"
+                required
+            >
+
+            <input
+                type="text"
+                id="lastName"
+                name="last_name"
+                value="{{ keeru.last_name }}"
+                placeholder="Last Name"
+                required
+            >
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="{{ keeru.email }}"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                value="{{ keeru.username }}"
+                placeholder="Username"
+                required
+            >
+
+            <button type="submit" class="update-profile-btn">
+                Update Profile
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("updateProfileForm");
+
+form.addEventListener("submit", function(e){
+
+    const fields = form.querySelectorAll("input");
+
+    let valid = true;
+
+    fields.forEach(field => {
+
+        if(field.value.trim() === ""){
+
+            valid = false;
+            field.style.border = "2px solid red";
+
+        }else{
+
+            field.style.border = "1px solid #28a745";
+
+        }
+
+    });
+
+    if(!valid){
+
+        e.preventDefault();
+
+        alert("Please fill all the required fields.");
+
+    }
+
+});
+
+document.querySelectorAll(".update-profile-card input").forEach(input=>{
+
+    input.addEventListener("focus", function(){
+
+        this.style.borderColor = "#0d6efd";
+
+    });
+
+    input.addEventListener("blur", function(){
+
+        this.style.borderColor = "#ccc";
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

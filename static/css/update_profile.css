@@ -1,0 +1,149 @@
+/* ==========================================================
+   Update Profile Page — Unique Theme
+   (standalone file — matches home.css design language)
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.update-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+.update-profile-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 45px 40px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.update-profile-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- Icon ---------- */
+.update-profile-icon {
+    font-size: 52px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(67, 233, 123, 0.22), rgba(56, 249, 215, 0.22));
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Heading ---------- */
+.update-profile-card h2 {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.update-profile-card h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+/* ---------- Form Fields ---------- */
+#updateProfileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+#updateProfileForm input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+#updateProfileForm input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+#updateProfileForm input:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Update Button ---------- */
+.update-profile-btn {
+    width: 100%;
+    padding: 13px 20px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    background-size: 200% auto;
+    color: #10261f;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-position 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 18px rgba(67, 233, 123, 0.35);
+}
+
+.update-profile-btn:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(67, 233, 123, 0.55);
+}
+
+.update-profile-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 460px) {
+    .update-profile-card {
+        padding: 32px 24px;
+    }
+
+    .update-profile-card h2 {
+        font-size: 22px;
+    }
+
+    .update-profile-icon {
+        width: 76px;
+        height: 76px;
+        line-height: 76px;
+        font-size: 40px;
+    }
+}

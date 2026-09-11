@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/update_genre.css' %}">
+
+<div class="update-container">
+
+    <div class="update-box">
+
+        <h2>Update Genre</h2>
+
+        <form method="POST" id="updateForm" novalidate>
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="update-submit-btn">
+                Update Genre
+            </button>
+
+        </form>
+
+        <div class="back-area">
+            <a href="{% url 'read_genre' %}" class="back-btn">
+                Back
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("updateForm");
+    const fields = form.querySelectorAll("input, textarea, select");
+
+    fields.forEach(field => {
+
+        field.addEventListener("focus", function () {
+            this.style.borderColor = "#0d6efd";
+        });
+
+        field.addEventListener("blur", function () {
+            this.style.borderColor = "#ccc";
+        });
+
+    });
+
+    form.addEventListener("submit", function (e) {
+
+        let valid = true;
+
+        fields.forEach(field => {
+            if (field.hasAttribute("required") && field.value.trim() === "") {
+                valid = false;
+                field.style.borderColor = "red";
+            }
+        });
+
+        if (!valid) {
+            e.preventDefault();
+            alert("Please fill all required fields.");
+        }
+
+    });
+
+});
+</script>
+
+{% endblock %}

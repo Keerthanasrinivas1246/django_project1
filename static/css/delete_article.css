@@ -1,0 +1,142 @@
+/* ==========================================================
+   Delete Article Confirmation Page — Unique Theme
+   (standalone file — matches home.css design language)
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.delete-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 30px 15px;
+}
+
+.delete-box {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 65, 108, 0.3);
+    border-radius: 18px;
+    padding: 45px 40px;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.delete-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(255, 65, 108, 0.25);
+}
+
+.delete-box h2 {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.warning-icon {
+    font-size: 48px;
+    margin: 10px 0;
+    animation: pulseWarning 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseWarning {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+.delete-box h4 {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.delete-box h4 span {
+    color: #ff4b6e;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.delete-confirm-btn {
+    width: 100%;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    background-size: 200% auto;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-position 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 18px rgba(255, 65, 108, 0.35);
+}
+
+.delete-confirm-btn:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(255, 65, 108, 0.55);
+}
+
+.delete-confirm-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.cancel-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    padding: 10px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.cancel-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 500px) {
+    .delete-box {
+        padding: 32px 24px;
+    }
+
+    .delete-box h2 {
+        font-size: 22px;
+    }
+
+    .warning-icon {
+        font-size: 40px;
+    }
+}

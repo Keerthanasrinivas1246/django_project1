@@ -1,0 +1,314 @@
+/* ---------------------------------------------
+   Genre List — table page
+   Palette: dark navy/purple gradient background,
+   glass card, gradient pill buttons
+   (matches update_genre.css)
+--------------------------------------------- */
+
+:root {
+    --bg-start: #1c1836;
+    --bg-end: #141229;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.10);
+    --row-bg: rgba(255, 255, 255, 0.03);
+    --row-bg-alt: rgba(255, 255, 255, 0.055);
+    --row-hover: rgba(255, 255, 255, 0.09);
+    --head-bg: rgba(255, 255, 255, 0.09);
+    --text-main: #f5f4fb;
+    --text-soft: #b9b6cf;
+    --accent-orange-1: #ff9a56;
+    --accent-orange-2: #ff6a3d;
+    --accent-blue-1: #38c6ff;
+    --accent-blue-2: #3b82f6;
+    --accent-green-1: #34d399;
+    --accent-green-2: #10b981;
+    --accent-red-1: #ff6b81;
+    --accent-red-2: #ef4444;
+    --input-bg: rgba(255, 255, 255, 0.07);
+    --input-border: rgba(255, 255, 255, 0.14);
+}
+
+.genre-list-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 56px 20px;
+    background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.genre-list-box {
+    width: 100%;
+    max-width: 1100px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 40px 44px 46px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.genre-list-box h2 {
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.genre-list-box h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 14px auto 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent-orange-1), var(--accent-orange-2));
+}
+
+/* --- Top bar: add button + search --- */
+.top-bar {
+    margin: 34px 0 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 13px 26px;
+    background: linear-gradient(90deg, var(--accent-blue-1), var(--accent-blue-2));
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.30);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    white-space: nowrap;
+}
+
+.add-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 26px rgba(59, 130, 246, 0.40);
+}
+
+.add-btn:active {
+    transform: translateY(1px);
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 260px;
+}
+
+.search-box input[type="text"] {
+    flex: 1;
+    max-width: 340px;
+    padding: 13px 18px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: 999px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.search-box input[type="text"]::placeholder {
+    color: #8b87a3;
+}
+
+.search-box input[type="text"]:focus {
+    border-color: var(--accent-blue-2);
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.search-btn {
+    padding: 13px 26px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--accent-orange-1), var(--accent-orange-2));
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 106, 61, 0.30);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 26px rgba(255, 106, 61, 0.40);
+}
+
+.search-btn:active {
+    transform: translateY(1px);
+}
+
+/* --- Table --- */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+}
+
+.genre-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 720px;
+}
+
+/* Fixed, proportioned column widths keep header + body cells aligned */
+.genre-table colgroup col:nth-child(1) { width: 8%; }
+.genre-table colgroup col:nth-child(2) { width: 18%; }
+.genre-table colgroup col:nth-child(3) { width: 34%; }
+.genre-table colgroup col:nth-child(4) { width: 14%; }
+.genre-table colgroup col:nth-child(5) { width: 26%; }
+
+.genre-table thead th {
+    padding: 16px 20px;
+    background: var(--head-bg);
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.genre-table thead th:nth-child(1),
+.genre-table thead th:nth-child(4),
+.genre-table thead th:nth-child(5) {
+    text-align: center;
+}
+
+.genre-table tbody td {
+    padding: 16px 20px;
+    color: var(--text-soft);
+    border-top: 1px solid var(--card-border);
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.genre-table tbody td:nth-child(1),
+.genre-table tbody td:nth-child(4) {
+    text-align: center;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.genre-table tbody td:nth-child(2) {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.genre-table tbody tr:nth-child(odd) {
+    background: var(--row-bg);
+}
+
+.genre-table tbody tr:nth-child(even) {
+    background: var(--row-bg-alt);
+}
+
+.genre-table tbody tr:hover {
+    background: var(--row-hover);
+}
+
+.no-data {
+    text-align: center;
+    padding: 30px 16px !important;
+    color: #8b87a3;
+    font-style: italic;
+}
+
+/* --- Actions column: buttons centered and evenly spaced --- */
+.genre-table td:nth-child(5) {
+    text-align: center;
+}
+
+.genre-table td:nth-child(5) > * {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.update-btn,
+.delete-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 999px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.update-btn {
+    background: linear-gradient(90deg, var(--accent-green-1), var(--accent-green-2));
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.30);
+}
+
+.update-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.40);
+}
+
+.delete-btn {
+    background: linear-gradient(90deg, var(--accent-red-1), var(--accent-red-2));
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.30);
+}
+
+.delete-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.40);
+}
+
+.update-btn:active,
+.delete-btn:active {
+    transform: translateY(1px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 760px) {
+    .genre-list-box {
+        padding: 28px 20px 32px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        justify-content: stretch;
+    }
+
+    .search-box input[type="text"] {
+        max-width: none;
+    }
+}

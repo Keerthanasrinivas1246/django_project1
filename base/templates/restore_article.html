@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/restore_article.css' %}">
+
+<div class="delete-container">
+
+    <div class="delete-box">
+
+        <h2>Restore Article</h2>
+
+        <p class="warning-icon">♻️</p>
+
+        <h4>
+            Are you sure you want to restore this article?
+            <br><br>
+            <span>"{{ data.title|default:'Untitled Article' }}"</span>
+        </h4>
+
+        <form method="POST" action="">
+
+            {% csrf_token %}
+
+            <button type="submit" class="delete-confirm-btn">
+                Yes, Restore
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="{% url 'history_article' %}" class="cancel-btn">
+            No, Cancel
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

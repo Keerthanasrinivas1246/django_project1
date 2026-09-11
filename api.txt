@@ -1,0 +1,22 @@
+API---> Application Programming Interface
+
+Definition of API : The process of transferring the data from one application to another
+
+SERIALISATION : The Process of converting python data to JSON(java script object notation) data 
+
+DESERIALISATION : the process of converting JSON data to python data 
+
+SERIALIZER : The python code(model) which is used for serialisation procedure is known as serialisation
+
+ENDPOINTS : The routes which we write to view API data
+
+TYPES OF HTTP methods:
+      1) POST ----> CREATE OPERATION
+      2) GET ----> READ OPERATION
+      3) PUT ----> UPDATE OPERATION
+      4) DELETE ----> DELETE OPERATION
+
+
+REST FRAMEWORK ----> Representaional State transferring
+
+Definition of REST : The process of sharing data by a Representaion

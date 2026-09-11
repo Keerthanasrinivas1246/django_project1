@@ -1,0 +1,155 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/history_article.css' %}">
+
+<div class="article-container">
+
+    <h2>Article History</h2>
+
+    <div class="top-bar">
+
+        <form method="GET" action="" id="searchForm" class="search-box">
+
+            <input
+                type="text"
+                name="q"
+                id="searchInput"
+                value="{{ search|default_if_none:'' }}"
+                placeholder="Search articles..."
+            >
+
+            <button type="submit" class="btn">
+                Search
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Title</th>
+                    <th>Summary</th>
+                    <th>Author</th>
+                    <th>Tags</th>
+                    <th>Deleted_at</th>
+                    <th>Image</th>
+                    <th>Video</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for i in data %}
+
+                <tr>
+
+                    <td>{{ i.title }}</td>
+
+                    <td>{{ i.summary }}</td>
+
+                    <td>{{ i.author_name }}</td>
+
+                    <td>{{ i.tags }}</td>
+
+                    <td>{{ i.deleted_at }}</td>
+
+                    <td>
+                        {% if i.image %}
+                            <img src="{{ i.image.url }}"
+                                 class="article-image"
+                                 alt="{{ i.title }}">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+
+                    <td>
+
+                        {% if i.video %}
+
+                            <video controls class="article-video">
+
+                                <source src="{{ i.video.url }}" type="video/mp4">
+
+                                Your browser does not support the video tag.
+
+                            </video>
+
+                        {% else %}
+
+                            No Video
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'restore_article' i.id %}" class="update-btn">
+                            Restore
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="7" class="no-data">
+                        No Articles Found
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchForm = document.getElementById("searchForm");
+
+    if (searchForm) {
+
+        searchForm.addEventListener("submit", function (e) {
+
+            const input = document.getElementById("searchInput");
+
+            if (input.value.trim() === "") {
+
+                e.preventDefault();
+
+                alert("Please enter a search keyword.");
+
+            }
+
+        });
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

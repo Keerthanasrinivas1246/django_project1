@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/delete_genre.css' %}">
+
+<div class="delete-container">
+
+    <div class="delete-box">
+
+        <div class="warning-icon">⚠️</div>
+
+        <h2>Delete Genre</h2>
+
+        <p class="delete-message">
+            Are you sure you want to delete this genre?
+        </p>
+
+        <h3 class="genre-name">
+            "{{ data.name }}"
+        </h3>
+
+        <form method="POST" id="deleteForm">
+
+            {% csrf_token %}
+
+            <button type="submit" class="delete-btn">
+                Yes, Delete
+            </button>
+
+        </form>
+
+        <div class="cancel-area">
+
+            <a href="{% url 'read_genre' %}" class="cancel-btn">
+                No, Cancel
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("deleteForm");
+
+    form.addEventListener("submit", function (e) {
+
+        const confirmDelete = confirm("Are you sure you want to permanently delete this genre?");
+
+        if (!confirmDelete) {
+            e.preventDefault();
+        }
+
+    });
+
+});
+</script>
+
+{% endblock %}

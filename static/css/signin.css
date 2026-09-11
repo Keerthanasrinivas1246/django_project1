@@ -1,0 +1,186 @@
+/* ==========================================================
+   Login Page — Unique Theme
+   (standalone file — matches home.css design language)
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 45px 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- Icon ---------- */
+.login-icon {
+    font-size: 52px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.25), rgba(0, 242, 254, 0.25));
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Heading ---------- */
+.login-card h2 {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.login-card h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+}
+
+/* ---------- Form Fields ---------- */
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+#loginForm input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+#loginForm input::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+#loginForm input:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* NOTE: base border-color set here matches the JS blur() state,
+   so the two never visually conflict */
+#loginForm input {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Login Button ---------- */
+.login-btn {
+    width: 100%;
+    padding: 13px 20px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    background-size: 200% auto;
+    color: #062033;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-position 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 18px rgba(79, 172, 254, 0.35);
+}
+
+.login-btn:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(79, 172, 254, 0.55);
+}
+
+.login-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* ---------- Register Link ---------- */
+.login-card p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin: 4px 0 14px;
+}
+
+.register-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    padding: 9px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.register-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 460px) {
+    .login-card {
+        padding: 32px 24px;
+    }
+
+    .login-card h2 {
+        font-size: 22px;
+    }
+
+    .login-icon {
+        width: 76px;
+        height: 76px;
+        line-height: 76px;
+        font-size: 40px;
+    }
+}

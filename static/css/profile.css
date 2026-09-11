@@ -1,0 +1,171 @@
+/* ==========================================================
+   Profile Page — Unique Theme
+   (standalone file — matches home.css design language)
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 30px 15px;
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 45px 40px;
+    width: 100%;
+    max-width: 460px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- Icon ---------- */
+.profile-icon {
+    font-size: 56px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 138, 0, 0.25), rgba(229, 46, 113, 0.25));
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Headings ---------- */
+.profile-card h2 {
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.profile-card h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+}
+
+.profile-card h3 {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.profile-card h3 span {
+    display: block;
+    margin-top: 4px;
+    color: #4facfe;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* ---------- Details ---------- */
+.profile-details {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+}
+
+.profile-details p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.profile-details p strong {
+    color: #e0e0f8;
+    font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-buttons a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.update-btn {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    box-shadow: 0 6px 18px rgba(79, 172, 254, 0.35);
+}
+
+.update-btn:hover {
+    box-shadow: 0 10px 26px rgba(79, 172, 254, 0.55);
+}
+
+.password-btn {
+    background: linear-gradient(135deg, #ff8a00, #e52e71);
+    box-shadow: 0 6px 18px rgba(229, 46, 113, 0.35);
+}
+
+.password-btn:hover {
+    box-shadow: 0 10px 26px rgba(229, 46, 113, 0.55);
+}
+
+.profile-buttons a:active {
+    transform: scale(0.97) !important;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 500px) {
+    .profile-card {
+        padding: 32px 24px;
+    }
+
+    .profile-card h2 {
+        font-size: 22px;
+    }
+
+    .profile-icon {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 44px;
+    }
+}

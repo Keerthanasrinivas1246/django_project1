@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Framework</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    {% include 'nav.html' %}
+
+    <center>
+
+        <div id="messages">
+
+            {% for i in messages %}
+                <p>{{ i }}</p>
+            {% endfor %}
+
+        </div>
+
+    </center>
+
+    {% block content %}
+    {% endblock %}
+
+<script>
+
+const messageBox = document.getElementById("messages");
+
+if(messageBox && messageBox.innerHTML.trim() !== ""){
+
+    setTimeout(function(){
+
+        messageBox.classList.add("fade-out");
+
+        setTimeout(function(){
+
+            messageBox.style.display = "none";
+
+        },700);
+
+    },5000);
+
+}
+
+// Smooth button click animation
+
+document.querySelectorAll("button").forEach(button=>{
+
+    button.addEventListener("click",function(){
+
+        this.style.transform="scale(.96)";
+
+        setTimeout(()=>{
+
+            this.style.transform="scale(1)";
+
+        },150);
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+/* ---------------------------------------------
+   Add Genre — form page
+   Palette: dark navy/purple gradient background,
+   glass card, gradient pill buttons
+   (matches update_genre.css / read_genre.css)
+--------------------------------------------- */
+
+:root {
+    --bg-start: #1c1836;
+    --bg-end: #141229;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.10);
+    --text-main: #f5f4fb;
+    --text-soft: #b9b6cf;
+    --accent-orange-1: #ff9a56;
+    --accent-orange-2: #ff6a3d;
+    --accent-blue-1: #38c6ff;
+    --accent-blue-2: #3b82f6;
+    --input-bg: rgba(255, 255, 255, 0.07);
+    --input-border: rgba(255, 255, 255, 0.14);
+    --error: #ff6b6b;
+}
+
+.genre-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 20px;
+    background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.genre-box {
+    width: 100%;
+    max-width: 520px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 40px 42px 44px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.genre-box h2 {
+    margin: 0 0 14px;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.genre-box h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 14px auto 0;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent-orange-1), var(--accent-orange-2));
+}
+
+/* --- Top button area (Genre List link) --- */
+.button-area {
+    margin: 26px 0 30px;
+    text-align: center;
+}
+
+.list-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 11px 24px;
+    background: linear-gradient(90deg, var(--accent-blue-1), var(--accent-blue-2));
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.30);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.list-btn::before {
+    content: "←";
+}
+
+.list-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 26px rgba(59, 130, 246, 0.40);
+}
+
+.list-btn:active {
+    transform: translateY(1px);
+}
+
+/* --- Form (Django form.as_p renders <p> wrappers) --- */
+#genreForm p {
+    margin: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#genreForm label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+#genreForm input[type="text"],
+#genreForm input[type="number"],
+#genreForm textarea,
+#genreForm select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+#genreForm input::placeholder,
+#genreForm textarea::placeholder {
+    color: #8b87a3;
+}
+
+#genreForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#genreForm input:focus,
+#genreForm textarea:focus,
+#genreForm select:focus {
+    border-color: var(--accent-blue-2);
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+#genreForm select option {
+    background: #221e40;
+    color: var(--text-main);
+}
+
+#genreForm .helptext {
+    font-size: 0.78rem;
+    color: #8b87a3;
+}
+
+#genreForm ul.errorlist {
+    margin: 2px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--error);
+    font-size: 0.8rem;
+}
+
+/* --- Submit button (orange gradient pill, matches Search btn) --- */
+.submit-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 13px 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--accent-orange-1), var(--accent-orange-2));
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 106, 61, 0.30);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.submit-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 26px rgba(255, 106, 61, 0.40);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 560px) {
+    .genre-box {
+        padding: 30px 24px 34px;
+    }
+
+    .genre-box h2 {
+        font-size: 1.6rem;
+    }
+}

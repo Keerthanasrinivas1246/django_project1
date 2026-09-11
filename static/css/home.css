@@ -1,0 +1,201 @@
+/* ==========================================================
+   Add Article Page — Unique Theme
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    padding: 30px 15px;
+}
+
+/* ---------- Form Box ---------- */
+.form-box {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 40px 45px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.form-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.form-box h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.form-box h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+}
+
+/* ---------- Button Area ---------- */
+.button-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.list-btn {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    padding: 9px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(79, 172, 254, 0.4);
+    transition: all 0.3s ease;
+}
+
+.list-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(79, 172, 254, 0.6);
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+}
+
+.list-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ---------- Form Fields (Django form.as_p renders <p> wrappers) ---------- */
+#articleForm p {
+    margin-bottom: 18px;
+}
+
+#articleForm label {
+    display: block;
+    color: #e0e0f8;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+#articleForm input[type="text"],
+#articleForm input[type="email"],
+#articleForm input[type="number"],
+#articleForm input[type="date"],
+#articleForm input[type="url"],
+#articleForm textarea,
+#articleForm select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+#articleForm textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#articleForm input::placeholder,
+#articleForm textarea::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+#articleForm input:hover,
+#articleForm textarea:hover,
+#articleForm select:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#articleForm input:focus,
+#articleForm textarea:focus,
+#articleForm select:focus {
+    border-color: #e52e71;
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 0 0 4px rgba(229, 46, 113, 0.2);
+}
+
+#articleForm select {
+    cursor: pointer;
+}
+
+#articleForm select option {
+    background: #24243e;
+    color: #fff;
+}
+
+/* ---------- Submit Button ---------- */
+.submit-btn {
+    width: 100%;
+    padding: 13px 20px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ff8a00, #e52e71);
+    background-size: 200% auto;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-position 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 6px 18px rgba(229, 46, 113, 0.35);
+}
+
+.submit-btn:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(229, 46, 113, 0.55);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+    .form-box {
+        padding: 28px 22px;
+    }
+
+    .form-box h2 {
+        font-size: 23px;
+    }
+
+    .button-area {
+        justify-content: center;
+    }
+}
