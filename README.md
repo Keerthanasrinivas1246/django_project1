@@ -1,2 +1,2 @@
 # django_project1
-while learning a Django i have build a website 
+   🔗 **Live Demo:** [https://django-project1.onrender.com](https://django-project1.onrender.com)
